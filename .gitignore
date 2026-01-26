@@ -1,0 +1,9 @@
+evidence/
+.env
+.terraform/
+*.tfstate
+*.tfstate.*
+__pycache__/
+*.pyc
+*.log
+var/

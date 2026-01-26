@@ -1,0 +1,59 @@
+variable "snowflake_account" {
+  type        = string
+  description = "Snowflake account identifier"
+}
+
+variable "snowflake_user" {
+  type        = string
+  description = "Snowflake user"
+}
+
+variable "snowflake_role" {
+  type        = string
+  description = "Snowflake role"
+}
+
+variable "snowflake_warehouse" {
+  type        = string
+  description = "Snowflake warehouse name"
+}
+
+variable "snowflake_database" {
+  type        = string
+  description = "Snowflake database name"
+}
+
+variable "snowflake_schema" {
+  type        = string
+  description = "Snowflake schema name"
+}
+
+variable "create_database" {
+  type        = bool
+  description = "Create database if it does not exist"
+  default     = true
+}
+
+variable "create_schema" {
+  type        = bool
+  description = "Create schema if it does not exist"
+  default     = true
+}
+
+variable "create_warehouse" {
+  type        = bool
+  description = "Create warehouse if it does not exist"
+  default     = false
+}
+
+variable "create_snowpark_procedure" {
+  type        = bool
+  description = "Create Snowpark Python stored procedure for transform"
+  default     = true
+}
+
+variable "enable_apply" {
+  type        = bool
+  description = "Safety switch. Must be true to create cloud resources."
+  default     = false
+}

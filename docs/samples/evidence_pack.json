@@ -1,0 +1,21 @@
+{
+  "platform": "snowflake",
+  "repo_path": "/path/to/patchit-snowflake-labs",
+  "git_sha": "local",
+  "job_id": "snowflake_demo",
+  "run_id": "run_SNF1_snowpipe_format_break",
+  "timestamp": "2026-01-24T00:00:00Z",
+  "failure_signature": "SNF1_snowpipe_format_break",
+  "log_excerpt": "Snowpipe load failed: CSV delimiter mismatch",
+  "suspected_root_cause": "Snowpipe file format mismatch",
+  "impacted_assets": ["raw.events", "stage.events_stage", "pipe.events_pipe"],
+  "proposed_fix_summary": "Update file format + add format validation",
+  "diff_preview": "diff --git a/airflow/dags/snowflake_ingest_dag.py b/airflow/dags/snowflake_ingest_dag.py\n...",
+  "confidence": 0.58,
+  "stop_condition_evaluation": [],
+  "rollback_plan": "Revert PR and re-run Snowpipe",
+  "verification": {
+    "commands": ["airflow dags trigger -c '{\"scenario\":\"SNF1_snowpipe_format_break\"}' patchit_snowflake_ingest_dag"],
+    "results": "pending"
+  }
+}

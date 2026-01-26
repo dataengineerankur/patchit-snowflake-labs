@@ -1,0 +1,12 @@
+{
+  "run_id": "run_SNF1_snowpipe_format_break",
+  "platform": "snowflake",
+  "scenario_id": "SNF1_snowpipe_format_break",
+  "event_type": "remediation.completed",
+  "confidence": 0.58,
+  "fixed": true,
+  "rca_category": "format_mismatch",
+  "ts": "2026-01-24T00:02:00Z",
+  "repo_key": "patchit-snowflake-labs",
+  "artifacts": ["evidence_pack.json", "patch.diff"]
+}
