@@ -119,6 +119,21 @@ resource "snowflake_task" "merge_task" {
   ]
 }
 
+resource "snowflake_task" "heavy_etl_task" {
+  count    = var.enable_apply ? 1 : 0
+  database = var.snowflake_database
+  schema   = var.snowflake_schema
+  name     = "PATCHIT_HEAVY_ETL_TASK"
+  warehouse = var.snowflake_warehouse
+  started  = true
+  schedule = "60 MINUTE"
+  sql_statement = "INSERT INTO ${var.snowflake_database}.${var.snowflake_schema}.CURATED_EVENTS SELECT ID, EVENT_TS FROM ${var.snowflake_database}.${var.snowflake_schema}.RAW_EVENTS WHERE ID NOT IN (SELECT ID FROM ${var.snowflake_database}.${var.snowflake_schema}.CURATED_EVENTS)"
+  depends_on = [
+    snowflake_table.raw_events,
+    snowflake_table.curated_events,
+  ]
+}
+
 resource "snowflake_procedure" "snowpark_transform" {
   count    = var.enable_apply && var.create_snowpark_procedure ? 1 : 0
   database = var.snowflake_database
