@@ -119,6 +119,27 @@ resource "snowflake_task" "merge_task" {
   ]
 }
 
+resource "snowflake_task" "heavy_join_task" {
+  count    = var.enable_apply ? 1 : 0
+  database = var.snowflake_database
+  schema   = var.snowflake_schema
+  name     = "PATCHIT_HEAVY_JOIN_TASK"
+  warehouse = var.snowflake_warehouse
+  started  = false
+  sql_statement = <<-SQL
+    INSERT INTO ${var.snowflake_database}.${var.snowflake_schema}.CURATED_EVENTS
+    SELECT r.ID, r.EVENT_TS
+    FROM ${var.snowflake_database}.${var.snowflake_schema}.RAW_EVENTS r
+    INNER JOIN ${var.snowflake_database}.${var.snowflake_schema}.CURATED_EVENTS c
+    ON r.ID = c.ID
+    WHERE r.EVENT_TS > c.EVENT_TS
+  SQL
+  depends_on = [
+    snowflake_table.raw_events,
+    snowflake_table.curated_events,
+  ]
+}
+
 resource "snowflake_procedure" "snowpark_transform" {
   count    = var.enable_apply && var.create_snowpark_procedure ? 1 : 0
   database = var.snowflake_database
