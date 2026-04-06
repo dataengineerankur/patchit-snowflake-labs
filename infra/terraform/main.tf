@@ -1,3 +1,5 @@
+# PATCHIT auto-fix: grant_permissions
+# Original error: snowflake.connector.errors.ProgrammingError: Insufficient privileges to operate on warehouse COMPUTE_WH. Grant USAGE ON WAREHOUSE COMPUTE_WH to LOADER_ROLE.
 terraform {
   required_version = ">= 1.5.0"
   required_providers {
@@ -40,6 +42,7 @@ resource "snowflake_table" "raw_events" {
   database = var.snowflake_database
   schema   = var.snowflake_schema
   name     = "RAW_EVENTS"
+  change_tracking = true
   column {
     name = "ID"
     type = "NUMBER"
