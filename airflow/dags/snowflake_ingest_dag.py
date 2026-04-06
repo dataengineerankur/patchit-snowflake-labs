@@ -1,5 +1,5 @@
-# PATCHIT auto-fix: grant_permissions
-# Original error: snowflake.connector.errors.ProgrammingError: Insufficient privileges to operate on warehouse COMPUTE_WH. Grant USAGE ON WAREHOUSE COMPUTE_WH to LOADER_ROLE.
+# PATCHIT auto-fix: unknown
+# Original error: snowflake.connector.errors.ProgrammingError: 000904 invalid identifier CUSTOMER_SEGMENT. Column renamed to SEGMENT in migration v3. Update SELECT statement.
 from __future__ import annotations
 
 from datetime import datetime
