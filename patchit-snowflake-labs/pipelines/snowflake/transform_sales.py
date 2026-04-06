@@ -1,3 +1,8 @@
+# PATCHIT auto-fix: unknown
+# Classification: unknown
+# Error summary: pyspark.sql.utils.AnalysisException: Row access policy ROW_FILTER_PII is filtering all rows for LOADER_ROLE. Grant APPLY privilege or update row acces
+# TODO: Apply unknown — see PR description for manual steps
+
 """
 transform_sales.py
 
