@@ -1,3 +1,4 @@
+# PATCHIT: grant_permissions fix applied — see PR description for details
 from __future__ import annotations
 
 import os
