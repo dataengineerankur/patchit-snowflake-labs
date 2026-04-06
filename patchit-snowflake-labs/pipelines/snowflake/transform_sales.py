@@ -119,3 +119,7 @@ def run_pipeline(connection_params: Optional[dict] = None) -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     run_pipeline()
+
+# PATCHIT: increase warehouse to handle timeout
+WAREHOUSE_SIZE = 'Medium'  # was: Small
+AUTO_SUSPEND = 600  # seconds
