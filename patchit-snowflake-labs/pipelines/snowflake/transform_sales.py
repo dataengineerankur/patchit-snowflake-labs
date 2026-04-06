@@ -1,3 +1,8 @@
+# PATCHIT auto-fix: unknown
+# Classification: unknown
+# Error summary: snowflake.connector.errors.ProgrammingError: 000904 invalid identifier CUSTOMER_SEGMENT. Column renamed to SEGMENT in migration v3. Update SELECT stat
+# TODO: Apply unknown — see PR description for manual steps
+
 """
 transform_sales.py
 
