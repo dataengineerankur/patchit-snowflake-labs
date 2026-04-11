@@ -142,7 +142,7 @@ def compute_ltv_record(row: dict[str, Any], reference_date: date) -> dict[str, A
     )
 
     # Average monthly run-rate — divides total revenue by tenure in months
-    avg_monthly_revenue = total_revenue / tenure_months
+    avg_monthly_revenue = total_revenue / tenure_months if tenure_months > 0 else total_revenue
 
     predicted_12m  = round(avg_monthly_revenue * 12.0 * retention, 2)
     ltv_score      = round(predicted_12m * (1 + order_count * 0.02), 2)
