@@ -141,9 +141,12 @@ def compute_reorder_record(
     # When demand_std_dev == 0 (perfectly consistent demand), fall back to
     # a simpler formula using avg_qty_per_order as the order quantity unit.
     demand_std_dev   = float(row["STD_QTY_PER_ORDER"] or 0.0)
-    reorder_qty      = math.ceil(
-        (avg_daily_demand * lead_time_days) / demand_std_dev
-    )
+    if demand_std_dev > 0:
+        reorder_qty = math.ceil(
+            (avg_daily_demand * lead_time_days) / demand_std_dev
+        )
+    else:
+        reorder_qty = math.ceil(avg_daily_demand * lead_time_days) if avg_daily_demand > 0 else 1
 
     current_stock    = 0   # would come from inventory system in production
 
