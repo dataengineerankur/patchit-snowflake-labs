@@ -143,6 +143,8 @@ def compute_reorder_record(
     demand_std_dev   = float(row["STD_QTY_PER_ORDER"] or 0.0)
     reorder_qty      = math.ceil(
         (avg_daily_demand * lead_time_days) / demand_std_dev
+        if demand_std_dev > 0
+        else avg_qty_order * lead_time_days
     )
 
     current_stock    = 0   # would come from inventory system in production
