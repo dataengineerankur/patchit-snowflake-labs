@@ -52,8 +52,7 @@ BEGIN
         SELECT
             o.ORDER_ID,
             o.CUSTOMER_ID,
-            o.ORDER_DATE,
-            o.ORDER_UPDATED_AT
+            o.ORDER_DATE
         FROM ANALYTICS.RAW.ORDERS  o
         WHERE o.ORDER_STATUS = 'completed'
     ),
