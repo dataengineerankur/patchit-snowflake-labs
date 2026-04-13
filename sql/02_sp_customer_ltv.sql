@@ -136,7 +136,7 @@ BEGIN
             -- first (and only) completed order falls within the current
             -- calendar month
             -- ----------------------------------------------------------------
-            total_revenue / tenure_months                        AS avg_monthly_revenue,
+            total_revenue / NULLIF(tenure_months, 0)             AS avg_monthly_revenue,
 
             -- Frequency score: normalise orders_last_3m on [0,1] scale
             -- capped at 10 orders per quarter as a reasonable upper bound
