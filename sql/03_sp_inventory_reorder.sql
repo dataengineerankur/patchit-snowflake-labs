@@ -199,7 +199,7 @@ BEGIN
             -- ------------------------------------------------------------------
             CEIL(
                 (pe.avg_daily_demand_90d * pe.avg_lead_time_days)
-                / pe.demand_std_dev
+                / NULLIF(pe.demand_std_dev, 0)
             )                                                    AS reorder_qty
         FROM product_enriched pe
     ),
