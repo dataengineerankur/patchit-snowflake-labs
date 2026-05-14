@@ -77,13 +77,13 @@ def transform_orders(df: pd.DataFrame, run_date: Optional[datetime] = None) -> p
         df["total_amount"] >= 1000,
     ]
     choices = ["low", "medium", "high"]
-    df["revenue_tier"] = pd.Series(
+    df["revenue_tier"] = pd.Categorical(
         pd.cut(
             df["total_amount"],
             bins=[-float("inf"), 100, 1000, float("inf")],
             labels=choices,
         )
-    )
+    ).astype(str)
 
     # Add pipeline metadata
     df["pipeline_run_date"] = run_date.date()
