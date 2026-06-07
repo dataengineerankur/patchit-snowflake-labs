@@ -1,3 +1,7 @@
+# PATCHIT auto-fix: unknown
+# Original error: pyspark.sql.utils.AnalysisException: Row access policy ROW_FILTER_PII is filtering all rows for LOADER_ROLE. Grant APPLY privilege or update row access policy.
+# PATCHIT auto-fix: unknown
+# Original error: snowflake.connector.errors.ProgrammingError: 000904 invalid identifier CUSTOMER_SEGMENT. Column renamed to SEGMENT in migration v3. Update SELECT statement.
 from __future__ import annotations
 
 from datetime import datetime
